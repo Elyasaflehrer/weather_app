@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather app</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='project_details.css') }}">
+</head>
+<body>
+<article class="ProjectDetails">
+  <h2>Project Details</h2>
+    <p calss="ProjectDetails_p">
+<br>This project was developed in python and deployed on AWS EC2.</br>
+<br>I also chose to use the Flask framework and Gunicorn.</br>
+<br>The project source is located in my GitLab <a href="https://gitlab.com/elyasaf.lehrer">here</a>, include Dockerfile to build Python image,
+         the Nginx folder that contains the configuration file for Nginx and Dockerfile to build Nginx image.
+My Gitlab also includes docker-compose.yaml to share between containers.</br>
+    </p>
+ </article>
+<form action="/">
+    <div class="center">
+        <input type="submit" class="button" value="Back to home">
+    </div>
+</form>
+
+<form action="/download">
+    <div class="center">
+        <input type="submit" class="button" value="Download my CV">
+    </div>
+    <div class="center_s3">From S3 AWS</div>
+</form>
+
+
+</body>
+</html>

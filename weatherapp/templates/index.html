@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather app</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+    <meta name="NetsparkQuiltingResult" total-length="3175" removed="0" rules-found="w3424,w3425,w2727,w8015,w8016"/>
+</head>
+<body>
+<form action="/about-project">
+    <div class=""center>
+            <input type="submit" class=button-about-project " value="About project">
+        </div>
+        </form>
+<form action="/" method="post">
+    <div id="namer">
+        <div id="namer-input">
+            <input type="text" name="location" placeholder="Type location">
+        </div>
+
+    </div>
+    <div class="center">
+              <input type="submit" class="button" value="Get weather">
+
+
+    </div>
+</form>
+
+{% if dict_ %}
+
+<main class="main-container">
+    <div class="location-and-date">
+        <h1 class="location-and-date__location">{{location}} </h1>
+        <div>{{dict_[0].get_day()}} {{dict_[0].get_date()}}</div>
+
+    </div>
+
+
+    <div class="current-temperature">
+        <div class="current-temperature__icon-container">
+            <img src="{{dict_[0].get_icon()}}" class="current-temperature__icon" alt="">
+        </div>
+        <div class="current-temperature__content-container">
+            <div class="current-temperature__value">{{dict_[0].get_temp_day()}}&deg;</div>
+            <div class="current-temperature__summary">{{dict_[0].get_description()}}</div>
+        </div>
+    </div>
+
+
+    <div class="current-stats">
+        <div>
+            <div class="current-stats__value">{{dict_[0].get_temp_day()}}&deg;</div>
+            <div class="current-stats__label">Day</div>
+            <div class="current-stats__value">{{dict_[0].get_temp_night()}}&deg;</div>
+            <div class="current-stats__label">Night</div>
+        </div>
+        <div>
+            <div class="current-stats__value">{{dict_[0].get_windSpeed()}}</div>
+            <div class="current-stats__label">Wind</div>
+            <div class="current-stats__value">{{dict_[0].get_humidity()}}</div>
+            <div class="current-stats__label">Humidity</div>
+        </div>
+    </div>
+
+
+    <div class="next-5-days">
+        <h2 class="next-5-days__heading">Next 6 days</h2>
+        <div class="next-5-days__container">
+
+            {%for i in range(1, 7)%}
+            <div class="next-5-days__row">
+
+                <div class="next-5-days__date">
+                    {{dict_[i].get_day()}}
+                    <div class="next-5-days__label">{{dict_[i].get_date()}}</div>
+                </div>
+
+                <div class="next-5-days__low">
+                    {{dict_[i].get_temp_day()}}&deg;
+                    <div class="next-5-days__label">Day</div>
+                </div>
+
+                <div class="next-5-days__high">
+                    {{dict_[i].get_temp_night()}}&deg;
+                    <div class="next-5-days__label">Night</div>
+                </div>
+
+                <div class="next-5-days__icon">
+                    <img src="{{dict_[i].get_icon()}}" alt="">
+                    <div class="next-5-days__label">{{dict_[i].get_description()}}</div>
+                </div>
+
+                <div class="next-5-days__rain">
+                    {{dict_[i].get_humidity()}}
+                    <div class="next-5-days__label">Humidity</div>
+                </div>
+
+                <div class="next-5-days__wind">
+                    {{dict_[i].get_windSpeed()}}
+                    <div class="next-5-days__label">Wind</div>
+                </div>
+
+            </div>
+
+            {%endfor%}
+
+        </div>
+    </div>
+
+</main>
+{% endif %}
+
+</body>
+</html>
